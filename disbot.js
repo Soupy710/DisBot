@@ -1,6 +1,5 @@
 const Discord = require('discord.js')
 const { executionAsyncResource } = require('async_hooks');
-const fetch = require("node-fetch")
 const ytdl = require('ytdl-core')
 const { YTSearcher } = require('ytsearcher');
 const searcher = new YTSearcher({
