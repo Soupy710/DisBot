@@ -1,7 +1,7 @@
 {
   "name": "discordbot",
   "version": "1.0.0",
-  "description": "",
+  "description": "some discord music bot",
   "main": "disbot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/Soupy710/SoupyBot.git"
   },
-  "author": "",
+  "author": "swaroop bhat",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Soupy710/SoupyBot/issues"
