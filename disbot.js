@@ -4,7 +4,7 @@ const fetch = require("node-fetch")
 const ytdl = require('ytdl-core')
 const { YTSearcher } = require('ytsearcher');
 const searcher = new YTSearcher({
-  key: "AIzaSyDhEkCKGs7ftCHwGDGNmvcXLFrApvuLhUQ",
+  key: process.env.YTKEY,
   revealkey: true
 });
 
@@ -26,6 +26,10 @@ function getQuote() {
 
     })
 }
+
+client.on("guildCreate", guild => {
+  console.log("Joined a new guild: " + guild.name);
+})
 
 const queue = new Map();
 
