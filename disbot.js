@@ -3,7 +3,7 @@ const { executionAsyncResource } = require('async_hooks');
 const ytdl = require('ytdl-core')
 const { YTSearcher } = require('ytsearcher');
 const searcher = new YTSearcher({
-  key: process.env.YTKEY,
+  key: "AIzaSyDhEkCKGs7ftCHwGDGNmvcXLFrApvuLhUQ",
   revealkey: true
 });
 
@@ -31,28 +31,29 @@ client.on("guildCreate", guild => {
 })
 
 const queue = new Map();
-
+var current = new Date();
 
 client.on("guildCreate", guild => {
   console.log("Joined a new guild: " + guild.name);
 })
+
+
 client.on("message",msg => {
 
     if(msg.author.bot) return;
     var xyz=msg.content
-
+    
     if(xyz.includes("heysoupy status")) return msg.reply("I am busy da!")
     else if(msg.content=='$inspire') getQuote().then(quote => msg.channel.send(quote))
     if(msg.content=='ping') msg.reply("stop pinging da")
-
 
     if(!msg.content.startsWith(startText)) return;
     /* msg.mentions.users.forEach((k,v) => { msg.reply(v + 'is the id') console.log(v)})*/
 
     const mel = msg.content.slice(startText.length).trim().split(/\s+/g)
     //console.log(mel);
+    if(!mel.length) msg.reply("What man")
     const com = mel.shift().toLowerCase()
-    if(!mel.length)msg.reply("What man")
     //console.log(com);
     const serverQueue = queue.get(msg.guild.id)
     switch(com){
