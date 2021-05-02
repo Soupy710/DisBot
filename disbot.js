@@ -44,15 +44,14 @@ client.on("message",msg => {
     var xyz=msg.content.toLowerCase()
 
     if(xyz.includes("heysoupy status")) return msg.reply("I am busy da!")
-    else if(msg.content=='$inspire') getQuote().then(quote => msg.channel.send(quote))
-    if(msg.content.toLowerCase()=='ping') msg.reply("stop pinging da")
-    if(msg.content=='gg' || msg.content=='Gg') msg.reply("gg")
+    else if(msg.content=='$inspire') return getQuote().then(quote => msg.channel.send(quote))
+    if(msg.content.toLowerCase()=='ping') return msg.reply("stop pinging da")
+    if(msg.content=='gg' || msg.content=='Gg' || msg.content.toLowerCase()=='ggwp') return msg.channel.send("gg")
     if(!msg.content.toLowerCase().startsWith(startText)) return;
     /* msg.mentions.users.forEach((k,v) => { msg.reply(v + 'is the id') console.log(v)})*/
-
+    if(msg.content.toLowerCase()=='heysoupy') return msg.reply("What man")
     const mel = msg.content.slice(startText.length).trim().split(/\s+/g)
     //console.log(mel);
-    if(!mel.length) msg.reply("What man")
     const com = mel.shift().toLowerCase()
     //console.log(com);
     const serverQueue = queue.get(msg.guild.id)
