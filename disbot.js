@@ -13,7 +13,7 @@ const startText='heysoupy'
 
 client.on("ready",() => {
 //console.log(`Sup bois!I am ${client.user.tag}'s bot`)
-    console.log('Bot dev 5.1 running...')
+    console.log('Bot dev 1.12 running...')
 })
 
 
@@ -70,6 +70,9 @@ client.on("message",msg => {
           break;
       case 'resume':
           resume(serverQueue,msg);
+          break;
+      case '--version':
+          msg.reply("v1.12")
           break;
       default: msg.reply("No such command exists for now")
     }
