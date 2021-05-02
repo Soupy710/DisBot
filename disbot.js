@@ -55,6 +55,7 @@ client.on("message",msg => {
     const com = mel.shift().toLowerCase()
     //console.log(com);
     const serverQueue = queue.get(msg.guild.id)
+    //if(!serverQueue) return;
     switch(com){
       case 'play':
           execute(msg,serverQueue,mel);
@@ -151,7 +152,7 @@ function skip(msg,serverQueue)
 }
 function pause(serverQueue,msg)
 {
-  if(!serverQueue.connection) return msg.reply("Ntg is playing da")
+  if(!serverQueue || !serverQueue.connection) return msg.reply("Ntg is playing da")
   let vc=msg.member.voice.channel
   if(!vc) return msg.reply("Ay join one voice channel da")
   if(serverQueue.connection.dispatcher.paused) return msg.reply("Its paused only")
@@ -160,7 +161,7 @@ function pause(serverQueue,msg)
 }
 function resume(serverQueue,msg)
 {
-  if(!serverQueue.connection) return msg.reply("Ntg is playing da")
+  if(!serverQueue || !serverQueue.connection) return msg.reply("Ntg is playing da")
   let vc=msg.member.voice.channel
   if(!vc) return msg.reply("Ay join one voice channel da")
   if(serverQueue.connection.dispatcher.resumed) return msg.reply("Its paused only")
