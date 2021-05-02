@@ -41,13 +41,13 @@ client.on("guildCreate", guild => {
 client.on("message",msg => {
 
     if(msg.author.bot) return;
-    var xyz=msg.content
-    
+    var xyz=msg.content.toLowerCase()
+
     if(xyz.includes("heysoupy status")) return msg.reply("I am busy da!")
     else if(msg.content=='$inspire') getQuote().then(quote => msg.channel.send(quote))
-    if(msg.content=='ping') msg.reply("stop pinging da")
-
-    if(!msg.content.startsWith(startText)) return;
+    if(msg.content.toLowerCase()=='ping') msg.reply("stop pinging da")
+    if(msg.content=='gg' || msg.content=='Gg') msg.reply("gg")
+    if(!msg.content.toLowerCase().startsWith(startText)) return;
     /* msg.mentions.users.forEach((k,v) => { msg.reply(v + 'is the id') console.log(v)})*/
 
     const mel = msg.content.slice(startText.length).trim().split(/\s+/g)
@@ -71,6 +71,8 @@ client.on("message",msg => {
           break;
       case 'resume':
           resume(serverQueue,msg);
+          break;
+      default: msg.reply("No such command exists for now")
     }
 
     // else msg.channel.send("Ay one proper command you can't type ah");*/  
