@@ -44,7 +44,7 @@ client.on("message",msg => {
     var xyz=msg.content.toLowerCase()
 
     if(xyz.includes("heysoupy status")) return msg.reply("I am busy da!")
-    else if(msg.content=='$inspire') return getQuote().then(quote => msg.channel.send(quote))
+    //else if(msg.content=='$inspire') return getQuote().then(quote => msg.channel.send(quote))
     if(msg.content.toLowerCase()=='ping') return msg.reply("stop pinging da")
     if(msg.content=='gg' || msg.content=='Gg' || msg.content.toLowerCase()=='ggwp') return msg.channel.send("gg")
     if(!msg.content.toLowerCase().startsWith(startText)) return;
