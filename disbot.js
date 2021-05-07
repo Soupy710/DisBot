@@ -143,7 +143,7 @@ function stop(msg,serverQueue)
 {
   let vc=msg.member.voice.channel
   if(!vc) return msg.reply("Ay join one voice channel da")
-  if(!serverQueue) return msg.channel.send("There's ntg playing lol")
+  if(!serverQueue) msg.channel.send("There's ntg playing lol")
   serverQueue.songs = [];
   serverQueue.connection.dispatcher.end();
 }
