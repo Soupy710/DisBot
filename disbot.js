@@ -72,6 +72,8 @@ client.on("message",msg => {
       case 'resume':
           resume(serverQueue,msg);
           break;
+      case 'info':
+          songInfo(serverQueue,msg);
       case '--version':
           msg.reply("v1.12")
           break;
@@ -118,6 +120,7 @@ async function execute(msg,serverQueue,mel)
   else{
     serverQueue.songs.push(songDetails);
     msg.channel.send(`I added ${songDetails.title} to queue!`)
+    play(msg.guild,newQueue.songs[0])
   }
   msg.channel.send(result.first.url);
   return;
@@ -167,5 +170,18 @@ function resume(serverQueue,msg)
   if(serverQueue.connection.dispatcher.resumed) return msg.reply("Its paused only")
   serverQueue.connection.dispatcher.resume();
   msg.channel.send("The song has been resumed")
+}
+function songInfo(serverQueue,msg)
+{
+  let result = await searcher.search(mel.join(" "),{type: "video"})
+  const songInfo = await ytdl.getInfo(result.first.url)
+  let songDetails = { 
+    title: songInfo.videoDetails.title,
+    url: songInfo.videoDetails.video_url,
+    views: songInfo.videoDetails.viewCount
+  };
+  msg.channel.send(`Song title: ${songDetails.title}`)
+  msg.channel.send(`Views: ${songDetails.views}`)
+
 }
 client.login(process.env.TOKEN)
