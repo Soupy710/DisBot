@@ -9,7 +9,7 @@ const searcher = new YTSearcher({
 
 const client = new Discord.Client()
 require('dotenv').config()
-const startText='heysoupy'
+const startText='!soupy'
 
 client.on("ready",() => {
 //console.log(`Sup bois!I am ${client.user.tag}'s bot`)
@@ -43,13 +43,13 @@ client.on("message",msg => {
     if(msg.author.bot) return;
     var xyz=msg.content.toLowerCase()
 
-    if(xyz.includes("heysoupy status")) return msg.reply("I am busy da!")
+    if(xyz.includes("!soupy status")) return msg.reply("I am busy da!")
     //else if(msg.content=='$inspire') return getQuote().then(quote => msg.channel.send(quote))
     if(msg.content.toLowerCase()=='ping') return msg.reply("stop pinging da")
     if(msg.content=='gg' || msg.content=='Gg' || msg.content.toLowerCase()=='ggwp') return msg.channel.send("gg")
     if(!msg.content.toLowerCase().startsWith(startText)) return;
     /* msg.mentions.users.forEach((k,v) => { msg.reply(v + 'is the id') console.log(v)})*/
-    if(msg.content.toLowerCase()=='heysoupy') return msg.reply("What man")
+    if(msg.content.toLowerCase()=='!soupy') return msg.reply("What man")
     const mel = msg.content.slice(startText.length).trim().split(/\s+/g)
     //console.log(mel);
     const com = mel.shift().toLowerCase()
