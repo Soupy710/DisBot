@@ -73,7 +73,8 @@ client.on("message",msg => {
           resume(serverQueue,msg);
           break;
       case 'info':
-          songInfo(serverQueue,msg);
+          songInfo(serverQueue,msg,mel);
+          break;
       case '--version':
           msg.reply("v1.12")
           break;
@@ -171,7 +172,7 @@ function resume(serverQueue,msg)
   serverQueue.connection.dispatcher.resume();
   msg.channel.send("The song has been resumed")
 }
-async function songInfo(serverQueue,msg)
+async function songInfo(serverQueue,msg,mel)
 {
   let result = await searcher.search(mel.join(" "),{type: "video"})
   const songInfo = await ytdl.getInfo(result.first.url)
