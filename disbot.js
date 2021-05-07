@@ -171,7 +171,7 @@ function resume(serverQueue,msg)
   serverQueue.connection.dispatcher.resume();
   msg.channel.send("The song has been resumed")
 }
-function songInfo(serverQueue,msg)
+async function songInfo(serverQueue,msg)
 {
   let result = await searcher.search(mel.join(" "),{type: "video"})
   const songInfo = await ytdl.getInfo(result.first.url)
